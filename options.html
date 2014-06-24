@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script defer type="text/javascript" src="js/options.js"></script>
+    <title>訂便當提醒器設定頁</title>
+    <style>
+      html, body {
+        font-size: 10px;
+      }
+      section {
+        margin-bottom: 1rem;
+      }
+      section > header {
+        font-size: 1.5rem;
+        color: #fff;
+        line-height: 1.8rem;
+        display: block;
+        overflow: hidden;
+        background-color:#2c353b;
+        max-width: 600px;
+      }
+      footer {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+      }
+      button {
+        border-radius: 2rem;
+        background: #d8d8d8;
+        vertical-align: middle;
+        display: inline-block;
+        font-style: italic;
+        height: 4rem;
+        margin: 0 0 1rem;
+        padding: 0 1.2rem;
+        border: none;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <header>便當收團時間</header>
+      <input id="hour" size="2"></input>時
+      <input id="min" size="2"></input>分
+    </section>
+    <section>
+      <header>提醒頻率設定</header>
+      <div id="frequencyGroup">
+        <label>
+          <input type="radio" name="frequency" value="early">早上每小時提醒我</input>
+        </label><br/>
+        <label>
+          <input type="radio" name="frequency" value="late">關團前半小時不斷提醒我</input>
+        </label><br/>
+        <label>
+          <input type="radio" name="frequency" value="custom">自訂</input><br/>
+        </label><br/>
+      </div>
+      <input id="remindbefore" size="4"></input>分前開始提醒我<br>
+      <input id="remindevery" size="4"></input>分彈出一次視窗<br>
+    </section>
+    <button id="update">儲存</button>
+    <div id="output"></div>
+    <footer>Icon origin: <a href="http://www.irasutoya.com/" target="_blank">Irasutoya</a><br/>
+    Extension made by: <a href="http://github.com/rexboy7" target="_blank">rexboy</a></footer>
+  </body>
+</html>
