@@ -4,6 +4,19 @@ var remindPeriodInSecond = 28800;
 var remindIntervalInSecond = 3600;
 
 function init() {
+    chrome.notifications.onClicked.addListener(function (notificationId) {
+      console.log(notificationId);
+      window.open('http://dinbendon.net');
+      setNextDayAlarm();
+    });
+    chrome.notifications.onButtonClicked.addListener(function (notificationId) {
+      console.log(notificationId);
+      setNextDayAlarm();
+    });
+    updateConfig();
+    chrome.alarms.onAlarm.addListener(popNotification);
+}
+function updateConfig() {
   chrome.storage.sync.get(
     ['endHour', 'endMinute', 'remindPeriodInSecond', 'remindIntervalInSecond'],
     function(items) {
@@ -21,7 +34,6 @@ function init() {
         remindIntervalInSecond = items.remindIntervalInSecond;
       }
       setNextAlarm(true);
-      chrome.alarms.onAlarm.addListener(popNotification);
     });
 }
 
@@ -89,13 +101,6 @@ function popNotification(alarm) {
       chrome.notifications.clear('dinbendon', function() {});
       chrome.notifications.create('dinbendon', opt, function() {});
       setNextAlarm();
-      chrome.notifications.onClicked.addListener(function() {
-        window.open('http://dinbendon.net');
-        setNextDayAlarm();
-      });
-      chrome.notifications.onButtonClicked.addListener(function() {
-        setNextDayAlarm();
-      });
     }
   }
 }

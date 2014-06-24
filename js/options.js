@@ -62,7 +62,7 @@
     chrome.storage.sync.set(opt, function() {
       output.textContent = '設定已儲存';
       setTimeout(cleanOutput, 3000);
-      chrome.extension.getBackgroundPage().init();
+      chrome.extension.getBackgroundPage().updateConfig();
     });
   }
 
